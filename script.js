@@ -1,340 +1,255 @@
-/* ============================================================
-   METTALOKA YOUTH CENTRE – SCRIPT.JS
-   Handles: nav scroll, mobile menu, gallery filter, lightbox,
-            back-to-top, scroll animations
-   ============================================================ */
-
+/* ═══════════════════════════════════════════════════
+   METTALOKA YOUTH CENTRE — SCRIPT.JS
+   ═══════════════════════════════════════════════════ */
 (function () {
   'use strict';
 
-  /* ---- DOM References ---- */
-  const header      = document.getElementById('site-header');
-  const hamburger   = document.getElementById('hamburger');
-  const navLinks    = document.getElementById('nav-links');
-  const backToTop   = document.getElementById('back-to-top');
-  const lightbox    = document.getElementById('lightbox');
-  const lbClose     = document.getElementById('lightbox-close');
-  const lbPrev      = document.getElementById('lightbox-prev');
-  const lbNext      = document.getElementById('lightbox-next');
-  const lbContent   = document.getElementById('lightbox-content');
-  const galleryGrid = document.getElementById('gallery-grid');
+  /* ── ELEMENTS ── */
+  const header    = document.getElementById('site-header');
+  const burger    = document.getElementById('burger');
+  const navMenu   = document.getElementById('nav-menu');
+  const btt       = document.getElementById('btt');
+  const lightbox  = document.getElementById('lightbox');
+  const lbImg     = document.getElementById('lb-img');
+  const lbClose   = document.getElementById('lb-close');
+  const lbPrev    = document.getElementById('lb-prev');
+  const lbNext    = document.getElementById('lb-next');
+  const lbCount   = document.getElementById('lb-count');
+  const heroSlides= document.querySelectorAll('.hero-slide');
+  const heroDots  = document.querySelectorAll('.dot');
+  const galleryItems = document.querySelectorAll('.gi');
 
-  /* ============================================================
-     1. STICKY HEADER – changes style on scroll
-     ============================================================ */
-  let lastScrollY = 0;
-
+  /* ══════════════════════════════════════════
+     1. SCROLL — header + back-to-top
+  ══════════════════════════════════════════ */
   function onScroll() {
-    const scrollY = window.scrollY;
+    if (window.scrollY > 60)  { header.classList.add('scrolled'); }
+    else                       { header.classList.remove('scrolled'); }
 
-    // Header style toggle
-    if (scrollY > 60) {
-      header.classList.add('scrolled');
+    if (window.scrollY > 400) { btt.classList.add('show'); }
+    else                       { btt.classList.remove('show'); }
+
+    revealCheck();
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ══════════════════════════════════════════
+     2. BACK TO TOP
+  ══════════════════════════════════════════ */
+  btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* ══════════════════════════════════════════
+     3. MOBILE NAV
+  ══════════════════════════════════════════ */
+  burger.addEventListener('click', () => {
+    const open = navMenu.classList.toggle('open');
+    const bars = burger.querySelectorAll('span');
+    if (open) {
+      bars[0].style.cssText = 'transform:translateY(7px) rotate(45deg)';
+      bars[1].style.cssText = 'opacity:0';
+      bars[2].style.cssText = 'transform:translateY(-7px) rotate(-45deg)';
     } else {
-      header.classList.remove('scrolled');
+      bars.forEach(b => b.style.cssText = '');
     }
+  });
 
-    // Back-to-top visibility
-    if (scrollY > 400) {
-      backToTop.classList.add('visible');
-    } else {
-      backToTop.classList.remove('visible');
+  navMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navMenu.classList.remove('open');
+      burger.querySelectorAll('span').forEach(b => b.style.cssText = '');
+    });
+  });
+
+  document.addEventListener('click', e => {
+    if (!header.contains(e.target)) {
+      navMenu.classList.remove('open');
+      burger.querySelectorAll('span').forEach(b => b.style.cssText = '');
     }
+  });
 
-    lastScrollY = scrollY;
+  /* ══════════════════════════════════════════
+     4. HERO SLIDESHOW
+  ══════════════════════════════════════════ */
+  let currentSlide = 0;
+  let slideTimer;
+
+  function goToSlide(n) {
+    heroSlides[currentSlide].classList.remove('active');
+    heroDots[currentSlide].classList.remove('active');
+    currentSlide = (n + heroSlides.length) % heroSlides.length;
+    heroSlides[currentSlide].classList.add('active');
+    heroDots[currentSlide].classList.add('active');
   }
 
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll(); // Run on load
+  function nextSlide() { goToSlide(currentSlide + 1); }
 
-  /* ============================================================
-     2. MOBILE NAVIGATION TOGGLE
-     ============================================================ */
-  hamburger.addEventListener('click', function () {
-    const isOpen = navLinks.classList.toggle('open');
-    hamburger.setAttribute('aria-expanded', isOpen);
+  function startSlideshow() {
+    slideTimer = setInterval(nextSlide, 4500);
+  }
 
-    // Animate hamburger bars
-    const bars = hamburger.querySelectorAll('span');
-    if (isOpen) {
-      bars[0].style.transform = 'translateY(7px) rotate(45deg)';
-      bars[1].style.opacity   = '0';
-      bars[2].style.transform = 'translateY(-7px) rotate(-45deg)';
-    } else {
-      bars[0].style.transform = '';
-      bars[1].style.opacity   = '';
-      bars[2].style.transform = '';
-    }
-  });
+  function resetSlideshow() {
+    clearInterval(slideTimer);
+    startSlideshow();
+  }
 
-  // Close nav when a link is clicked
-  navLinks.querySelectorAll('.nav-link').forEach(function (link) {
-    link.addEventListener('click', function () {
-      navLinks.classList.remove('open');
-      const bars = hamburger.querySelectorAll('span');
-      bars[0].style.transform = '';
-      bars[1].style.opacity   = '';
-      bars[2].style.transform = '';
+  heroDots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      goToSlide(parseInt(dot.dataset.slide));
+      resetSlideshow();
     });
   });
 
-  // Close nav when clicking outside
-  document.addEventListener('click', function (e) {
-    if (!header.contains(e.target)) {
-      navLinks.classList.remove('open');
-      const bars = hamburger.querySelectorAll('span');
-      bars[0].style.transform = '';
-      bars[1].style.opacity   = '';
-      bars[2].style.transform = '';
-    }
-  });
+  startSlideshow();
 
-  /* ============================================================
-     3. BACK TO TOP
-     ============================================================ */
-  backToTop.addEventListener('click', function () {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  /* ══════════════════════════════════════════
+     5. GALLERY LIGHTBOX
+  ══════════════════════════════════════════ */
+  // Collect all image srcs from gallery
+  const galleryImgs = Array.from(galleryItems).map(gi => gi.querySelector('img').src);
+  let currentGalleryIdx = 0;
 
-  /* ============================================================
-     4. GALLERY FILTER
-     ============================================================ */
-  const filterBtns  = document.querySelectorAll('.gallery-filter');
-  const galleryItems = document.querySelectorAll('.gallery-item');
-
-  filterBtns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      // Update active button
-      filterBtns.forEach(function (b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-
-      const filter = btn.dataset.filter;
-
-      galleryItems.forEach(function (item) {
-        if (filter === 'all' || item.dataset.category === filter) {
-          item.style.display = '';
-          item.style.animation = 'galleryFadeIn 0.4s ease forwards';
-        } else {
-          item.style.display = 'none';
-        }
-      });
-    });
-  });
-
-  // Inject filter fade-in keyframe dynamically
-  const styleEl = document.createElement('style');
-  styleEl.textContent = `
-    @keyframes galleryFadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to   { opacity: 1; transform: scale(1); }
-    }
-  `;
-  document.head.appendChild(styleEl);
-
-  /* ============================================================
-     5. LIGHTBOX
-     ============================================================ */
-  // Gallery data (placeholder labels and descriptions)
-  const galleryData = [
-    { label: 'Student Life Photo 1',   cat: 'Student Life',  desc: 'Everyday moments in the Mettaloka community.' },
-    { label: 'Student Life Photo 2',   cat: 'Study Time',    desc: 'Focused study sessions at the centre.' },
-    { label: 'Student Life Photo 3',   cat: 'Daily Routine', desc: 'Morning routines that build discipline.' },
-    { label: 'Events Photo 1',         cat: 'Annual Event',  desc: 'Celebrations that bring the whole family together.' },
-    { label: 'Events Photo 2',         cat: 'Celebration',   desc: 'Moments of joy and achievement.' },
-    { label: 'Events Photo 3',         cat: 'Special Event', desc: 'Special occasions mark milestones in our journey.' },
-    { label: 'Seminar Photo 1',        cat: 'Sunday Seminar',desc: 'Weekly seminars igniting curiosity and conversation.' },
-    { label: 'Seminar Photo 2',        cat: 'Guest Speaker', desc: 'Inspiring voices from the outside world.' },
-    { label: 'MPL Photo 1',            cat: 'MPL Match',     desc: 'The spirit of sportsmanship alive in every game.' },
-    { label: 'MPL Photo 2',            cat: 'MPL Champions', desc: 'Champions celebrated with pride and brotherhood.' },
-    { label: 'MPL Photo 3',            cat: 'Team Spirit',   desc: 'Because winning together is what Mettaloka is about.' }
-  ];
-
-  let currentIndex = 0;
-  let visibleItems = [];
-
-  function openLightbox(index) {
-    // Build list of currently visible items
-    visibleItems = [];
-    galleryItems.forEach(function (item) {
-      if (item.style.display !== 'none') {
-        visibleItems.push(parseInt(item.dataset.index));
-      }
-    });
-
-    currentIndex = visibleItems.indexOf(index);
-    if (currentIndex === -1) currentIndex = 0;
-    renderLightbox();
-    lightbox.classList.add('active');
+  function openLightbox(idx) {
+    currentGalleryIdx = idx;
+    lbImg.src = galleryImgs[idx];
+    lbCount.textContent = (idx + 1) + ' / ' + galleryImgs.length;
+    lightbox.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
 
   function closeLightbox() {
-    lightbox.classList.remove('active');
+    lightbox.classList.remove('open');
     document.body.style.overflow = '';
+    // Clear src after transition to free memory
+    setTimeout(() => { if (!lightbox.classList.contains('open')) lbImg.src = ''; }, 350);
   }
 
-  function renderLightbox() {
-    const idx  = visibleItems[currentIndex];
-    const data = galleryData[idx] || { label: 'Photo', cat: '', desc: '' };
-    lbContent.innerHTML = `
-      <div class="lb-placeholder">
-        <span style="font-size:3rem;">📷</span>
-        <p style="font-weight:600;font-size:1.1rem;">${data.label}</p>
-        <p style="font-size:0.85rem;opacity:0.6;">${data.desc}</p>
-        <small style="opacity:0.4;font-style:italic;font-size:0.75rem;">Editable / Replace Later – swap with real &lt;img&gt; tag</small>
-      </div>
-    `;
+  function showGalleryImg(idx) {
+    currentGalleryIdx = (idx + galleryImgs.length) % galleryImgs.length;
+    lbImg.style.opacity = '0';
+    setTimeout(() => {
+      lbImg.src = galleryImgs[currentGalleryIdx];
+      lbCount.textContent = (currentGalleryIdx + 1) + ' / ' + galleryImgs.length;
+      lbImg.style.opacity = '1';
+    }, 120);
   }
 
-  galleryItems.forEach(function (item) {
-    item.addEventListener('click', function () {
-      openLightbox(parseInt(item.dataset.index));
-    });
+  // Add transition to lb img
+  if (lbImg) lbImg.style.transition = 'opacity .15s ease';
+
+  galleryItems.forEach((gi, i) => {
+    gi.addEventListener('click', () => openLightbox(i));
   });
 
   lbClose.addEventListener('click', closeLightbox);
+  lbPrev.addEventListener('click', () => showGalleryImg(currentGalleryIdx - 1));
+  lbNext.addEventListener('click', () => showGalleryImg(currentGalleryIdx + 1));
 
-  lbPrev.addEventListener('click', function () {
-    currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
-    renderLightbox();
-  });
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
 
-  lbNext.addEventListener('click', function () {
-    currentIndex = (currentIndex + 1) % visibleItems.length;
-    renderLightbox();
-  });
-
-  // Close on backdrop click
-  lightbox.addEventListener('click', function (e) {
-    if (e.target === lightbox) closeLightbox();
-  });
-
-  // Keyboard navigation
-  document.addEventListener('keydown', function (e) {
-    if (!lightbox.classList.contains('active')) return;
+  document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('open')) return;
     if (e.key === 'Escape')      closeLightbox();
-    if (e.key === 'ArrowLeft')   { currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length; renderLightbox(); }
-    if (e.key === 'ArrowRight')  { currentIndex = (currentIndex + 1) % visibleItems.length; renderLightbox(); }
+    if (e.key === 'ArrowLeft')   showGalleryImg(currentGalleryIdx - 1);
+    if (e.key === 'ArrowRight')  showGalleryImg(currentGalleryIdx + 1);
   });
 
-  /* ============================================================
-     6. SCROLL REVEAL – lightweight IntersectionObserver animation
-     ============================================================ */
-  const revealElements = document.querySelectorAll(
-    '.about-card, .center-card, .life-card, .activity-card, ' +
-    '.criteria-item, .benefit-item, .notice-card, .gallery-item, ' +
-    '.contact-info-card, .contact-message-card, .stat-item'
+  // Touch swipe support
+  let touchStartX = 0;
+  lightbox.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+  lightbox.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 40) {
+      dx < 0 ? showGalleryImg(currentGalleryIdx + 1) : showGalleryImg(currentGalleryIdx - 1);
+    }
+  });
+
+  /* ══════════════════════════════════════════
+     6. SMOOTH ANCHOR SCROLL (accounts for nav)
+  ══════════════════════════════════════════ */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      const offset = header.offsetHeight + 12;
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+    });
+  });
+
+  /* ══════════════════════════════════════════
+     7. SCROLL REVEAL
+  ══════════════════════════════════════════ */
+  const revealTargets = document.querySelectorAll(
+    '.acard, .centre-card, .life-card, .prog-card, ' +
+    '.sel-step, .c-stat, .ncard, .gi, .contact-card, ' +
+    '.stat, .carla-about p, .carla-selection'
   );
 
-  // Set initial state
-  revealElements.forEach(function (el) {
-    el.style.opacity  = '0';
-    el.style.transform = 'translateY(24px)';
-    el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
+  // Set initial hidden state
+  revealTargets.forEach((el, i) => {
+    el.classList.add('reveal');
+    // Stagger delay for grid children
+    const parent = el.parentElement;
+    if (parent) {
+      const siblings = Array.from(parent.children).filter(c => c.classList.contains('reveal') || c === el);
+      const idx = Array.from(parent.children).indexOf(el);
+      el.style.transitionDelay = Math.min(idx * 0.06, 0.35) + 's';
+    }
   });
 
-  const revealObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.style.opacity  = '1';
-        entry.target.style.transform = 'translateY(0)';
-        revealObserver.unobserve(entry.target);
+        entry.target.classList.add('visible');
+        revealObs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
 
-  revealElements.forEach(function (el) {
-    revealObserver.observe(el);
-  });
-
-  /* ============================================================
-     7. ACTIVE NAV LINK – highlight based on scroll position
-     ============================================================ */
-  const sections   = document.querySelectorAll('section[id]');
-  const allNavLinks = document.querySelectorAll('.nav-links .nav-link');
-
-  function updateActiveNavLink() {
-    let currentSection = '';
-    sections.forEach(function (section) {
-      const sectionTop = section.offsetTop - 100;
-      if (window.scrollY >= sectionTop) {
-        currentSection = section.getAttribute('id');
-      }
-    });
-
-    allNavLinks.forEach(function (link) {
-      link.classList.remove('active-link');
-      if (link.getAttribute('href') === '#' + currentSection) {
-        link.classList.add('active-link');
+  function revealCheck() {
+    revealTargets.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 30) {
+        el.classList.add('visible');
       }
     });
   }
 
-  window.addEventListener('scroll', updateActiveNavLink, { passive: true });
+  revealTargets.forEach(el => revealObs.observe(el));
+  revealCheck(); // Run immediately for above-fold items
 
-  // Inject active-link style
-  const activeStyle = document.createElement('style');
-  activeStyle.textContent = `
-    .site-header.scrolled .nav-link.active-link {
-      background: var(--saffron-pale);
-      color: var(--saffron);
-    }
-  `;
-  document.head.appendChild(activeStyle);
+  /* ══════════════════════════════════════════
+     8. STATS COUNTER
+  ══════════════════════════════════════════ */
+  const statsBar = document.querySelector('.stats-bar');
+  let counted = false;
 
-  /* ============================================================
-     8. SMOOTH ANCHOR OFFSET (account for fixed header)
-     ============================================================ */
-  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
-    anchor.addEventListener('click', function (e) {
-      const target = document.querySelector(this.getAttribute('href'));
-      if (!target) return;
-      e.preventDefault();
-      const headerHeight = header.offsetHeight;
-      const targetY = target.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
-      window.scrollTo({ top: targetY, behavior: 'smooth' });
-    });
-  });
-
-  /* ============================================================
-     9. STATS COUNTER ANIMATION
-     ============================================================ */
-  const statNumbers = document.querySelectorAll('.stat-number');
-  let statsAnimated = false;
-
-  const statsObserver = new IntersectionObserver(function (entries) {
-    if (entries[0].isIntersecting && !statsAnimated) {
-      statsAnimated = true;
-      statNumbers.forEach(function (el) {
-        const text = el.textContent.trim();
-        // Animate numeric values only
-        const match = text.match(/^(\d+)/);
+  const statsObs = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting && !counted) {
+      counted = true;
+      document.querySelectorAll('.stat strong').forEach(el => {
+        const raw = el.textContent.trim();
+        const match = raw.match(/^(\d+)/);
         if (!match) return;
-        const target   = parseInt(match[1]);
-        const suffix   = text.replace(match[1], '');
-        const duration = 1200;
-        const start    = performance.now();
-
+        const target = parseInt(match[1]);
+        const suffix = raw.slice(match[1].length);
+        const dur = 1400;
+        const start = performance.now();
         function tick(now) {
-          const elapsed  = now - start;
-          const progress = Math.min(elapsed / duration, 1);
-          const eased    = 1 - Math.pow(1 - progress, 3);
-          el.textContent = Math.round(eased * target) + suffix;
-          if (progress < 1) requestAnimationFrame(tick);
+          const p = Math.min((now - start) / dur, 1);
+          const v = Math.round((1 - Math.pow(1 - p, 3)) * target);
+          el.textContent = v + suffix;
+          if (p < 1) requestAnimationFrame(tick);
         }
-
         requestAnimationFrame(tick);
       });
     }
   }, { threshold: 0.5 });
 
-  const statsStrip = document.querySelector('.stats-strip');
-  if (statsStrip) statsObserver.observe(statsStrip);
+  if (statsBar) statsObs.observe(statsBar);
 
-  /* ============================================================
-     INIT
-     ============================================================ */
-  console.log('✅ Mettaloka Youth Centre – Website loaded successfully.');
-  console.log('🏠 Est. 2003 | Brotherhood • Discipline • Learning');
+  console.log('✅ Mettaloka Youth Centre — loaded');
+  console.log('🏠 Est. 2003 · Brotherhood · Discipline · Learning');
 
 })();
