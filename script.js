@@ -288,6 +288,78 @@
       }, { threshold: 0.5 }).observe(sBar);
     }
 
+    /* ============================================================
+       9. THOUGHT OF THE DAY — changes daily, fades between quotes
+    ============================================================ */
+    var thoughts = [
+      "Discipline is the foundation on which success and character are built.",
+      "A calm and focused mind leads to wise decisions and a peaceful life.",
+      "True education is not just knowledge, but right conduct and compassion.",
+      "Serve others selflessly — this is the highest form of living.",
+      "Control your thoughts, and you will shape your destiny.",
+      "Patience and perseverance are the keys to lasting success.",
+      "Walk the path of truth and kindness, and success will follow naturally."
+    ];
+    var thoughtAuthor = "— Acharya Buddharakkhita";
+
+    var tQuote  = document.getElementById('thought-quote');
+    var tAuthor = document.getElementById('thought-author');
+
+    if (tQuote && tAuthor) {
+      /* Pick thought based on day of year so it changes daily */
+      var now   = new Date();
+      var start = new Date(now.getFullYear(), 0, 0);
+      var dayOfYear = Math.floor((now - start) / 86400000);
+      var todayIdx  = dayOfYear % thoughts.length;
+
+      tQuote.textContent  = '\u201C' + thoughts[todayIdx] + '\u201D';
+      tAuthor.textContent = thoughtAuthor;
+
+      /* Auto-cycle through thoughts every 8 seconds */
+      var tIdx = todayIdx;
+      setInterval(function () {
+        tQuote.classList.add('fading');
+        tAuthor.classList.add('fading');
+        setTimeout(function () {
+          tIdx = (tIdx + 1) % thoughts.length;
+          tQuote.textContent  = '\u201C' + thoughts[tIdx] + '\u201D';
+          tAuthor.textContent = thoughtAuthor;
+          tQuote.classList.remove('fading');
+          tAuthor.classList.remove('fading');
+        }, 620);
+      }, 8000);
+    }
+
+    /* ============================================================
+       10. GALLERY VIEW MORE
+    ============================================================ */
+    var moreBtn    = document.getElementById('gallery-more-btn');
+    var moreLabel  = document.getElementById('gallery-more-label');
+    var hiddenGIs  = document.querySelectorAll('.gi-hidden');
+    var galExpanded = false;
+
+    if (moreBtn) {
+      moreBtn.addEventListener('click', function () {
+        if (!galExpanded) {
+          hiddenGIs.forEach(function (gi) { gi.classList.add('gi-shown'); });
+          moreLabel.textContent = 'Show Less';
+          moreBtn.classList.add('expanded');
+          galExpanded = true;
+        } else {
+          hiddenGIs.forEach(function (gi) { gi.classList.remove('gi-shown'); });
+          moreLabel.textContent = 'View All Photos (29)';
+          moreBtn.classList.remove('expanded');
+          galExpanded = false;
+          /* Scroll back to gallery top */
+          var galSec = document.getElementById('s-gallery');
+          if (galSec) {
+            var navH = HDR ? HDR.offsetHeight : 70;
+            window.scrollTo({ top: galSec.getBoundingClientRect().top + window.pageYOffset - navH - 8, behavior: 'smooth' });
+          }
+        }
+      });
+    }
+
     console.log('✅ Mettaloka Youth Centre — fully loaded');
 
   }); /* end DOMContentLoaded */
