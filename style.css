@@ -531,3 +531,71 @@ p  { font-size:0.95rem; line-height:1.82 }
   .lb-next { right:0.5rem }
   .carla-stats { grid-template-columns:1fr 1fr }
 }
+
+/* ============================================================
+   HERO TICKER (live update)
+============================================================ */
+.hero-ticker {
+  position:absolute; bottom:4.5rem; left:50%; transform:translateX(-50%);
+  z-index:3; display:flex; align-items:center; gap:0.6rem;
+  background:rgba(10,5,2,0.62); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  border:1px solid rgba(200,114,30,0.35); border-radius:50px;
+  padding:0.5rem 1.2rem 0.5rem 0.85rem;
+  max-width:min(92vw,720px); white-space:nowrap; overflow:hidden;
+}
+.ticker-dot {
+  width:8px; height:8px; border-radius:50%; background:#4ade80; flex-shrink:0;
+  box-shadow:0 0 0 0 rgba(74,222,128,0.7);
+  animation:tickerPulse 2s ease infinite;
+}
+@keyframes tickerPulse {
+  0%  { box-shadow:0 0 0 0 rgba(74,222,128,0.7); }
+  70% { box-shadow:0 0 0 6px rgba(74,222,128,0); }
+  100%{ box-shadow:0 0 0 0 rgba(74,222,128,0); }
+}
+.ticker-label {
+  font-size:0.65rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+  color:#F5A44E; flex-shrink:0;
+}
+.ticker-text { font-size:0.8rem; color:rgba(255,255,255,0.85); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+@media (max-width:600px) {
+  .hero-ticker { bottom:5rem; padding:0.45rem 1rem 0.45rem 0.75rem; max-width:92vw; }
+  .ticker-label { display:none; }
+  .ticker-text  { font-size:0.75rem; }
+}
+
+/* ============================================================
+   THOUGHT OF THE DAY
+============================================================ */
+.thought-band {
+  background:#2A1708; padding:1.4rem 1.5rem; text-align:center;
+  border-bottom:1px solid rgba(200,114,30,0.18);
+}
+.thought-inner { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:0.25rem; }
+.thought-label { font-size:0.65rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#F5A44E; opacity:0.8; }
+.thought-quote {
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:clamp(0.95rem,2.5vw,1.12rem); font-style:italic;
+  color:#F6EDE0; line-height:1.55; margin:0;
+  transition:opacity 0.6s ease;
+}
+.thought-author { font-size:0.78rem; color:#F5A44E; font-weight:500; margin:0; transition:opacity 0.6s ease; }
+.thought-quote.fading, .thought-author.fading { opacity:0; }
+
+/* ============================================================
+   GALLERY — HIDDEN IMAGES + VIEW MORE
+============================================================ */
+.gi-hidden { display:none; }
+.gi-hidden.gi-shown { display:block; }
+.gallery-more-wrap { text-align:center; padding:1.8rem 1.5rem 0.5rem; }
+.gallery-more-btn {
+  display:inline-flex; align-items:center; gap:0.5rem;
+  background:#fff; color:#6D3C1C;
+  border:2px solid #E8DDD0; border-radius:50px;
+  padding:0.72rem 1.8rem; font-size:0.88rem; font-weight:600; cursor:pointer;
+  font-family:'DM Sans',system-ui,sans-serif;
+  transition:background 0.3s, border-color 0.3s, color 0.3s, transform 0.3s;
+}
+.gallery-more-btn:hover { background:#C8721E; border-color:#C8721E; color:#fff; transform:translateY(-2px); }
+.gallery-more-btn.expanded svg { transform:rotate(180deg); }
+.gallery-more-btn svg { transition:transform 0.3s; }
