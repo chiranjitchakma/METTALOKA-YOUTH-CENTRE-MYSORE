@@ -7,373 +7,425 @@
   <title>Mettaloka Youth Centre – Mysuru</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- NAV -->
-  <header id="site-header">
-    <div class="nav-wrap">
-      <a href="#hero-sec" class="brand">
-        <img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/MMYC%20Logo.jpeg" alt="MMYC Logo" class="brand-logo" />
-        <div class="brand-words">
-          <span class="brand-name">Mettaloka Youth Centre, Mysuru</span>
-          <span class="brand-unit">Unit of Mahabodhi Maitri Mandala, Mysuru</span>
-        </div>
-      </a>
-      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-list" id="nav-list">
-        <li><a href="#about-sec"    class="nl">About</a></li>
-        <li><a href="#centres-sec"  class="nl">Centres</a></li>
-        <li><a href="#carla-sec"    class="nl">Carla Home</a></li>
-        <li><a href="#life-sec"     class="nl">Student Life</a></li>
-        <li><a href="#prog-sec"     class="nl">Programs</a></li>
-        <li><a href="#gallery-sec"  class="nl">Gallery</a></li>
-        <li><a href="#notices-sec"  class="nl">Notices</a></li>
-        <li><a href="#contact-sec"  class="nl nl-cta">Contact</a></li>
-      </ul>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <section id="hero-sec" class="hero">
-    <div class="hero-slides" id="hero-slides">
-      <div class="hs active" style="background-image:url('https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20hero%201%20-%20Copy.jpg')"></div>
-      <div class="hs"        style="background-image:url('https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20hero%202.jpeg')"></div>
-      <div class="hs"        style="background-image:url('https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20hero%203.jpeg')"></div>
-      <div class="hs"        style="background-image:url('https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20hero%204.jpeg')"></div>
-    </div>
-    <div class="hero-dim"></div>
-    <div class="hero-body">
-      <p class="hero-pill">Est. 2003 &nbsp;&middot;&nbsp; Mysuru, India</p>
-      <h1 class="hero-h1">Mettaloka<br /><em>Youth Centre</em></h1>
-      <p class="hero-tag">Brotherhood &nbsp;&middot;&nbsp; Discipline &nbsp;&middot;&nbsp; Learning</p>
-      <a href="#about-sec" class="hero-btn">Discover Our Story</a>
-    </div>
-    <div class="hero-dots" id="hero-dots"></div>
-  </section>
-
-  <!-- STATS -->
-  <div class="stats-strip">
-    <div class="ss-item"><b class="ss-num" data-to="2003">2003</b><span>Founded</span></div>
-    <div class="ss-sep"></div>
-    <div class="ss-item"><b class="ss-num" data-to="2">2</b><span>Active Centres</span></div>
-    <div class="ss-sep"></div>
-    <div class="ss-item"><b class="ss-num" data-to="20" data-sfx="+">20+</b><span>Years of Service</span></div>
-    <div class="ss-sep"></div>
-    <div class="ss-item"><b class="ss-num" data-to="180">180</b><span>Carla Home Children</span></div>
+<!-- ═══════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════ -->
+<header id="hdr">
+  <div class="nav-inner">
+    <a href="#s-hero" class="brand">
+      <img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/MMYC%20Logo.jpeg" alt="MMYC" class="brand-img" />
+      <div class="brand-txt">
+        <span class="brand-name">Mettaloka Youth Centre, Mysuru</span>
+        <span class="brand-unit">Unit of Mahabodhi Maitri Mandala, Mysuru</span>
+      </div>
+    </a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav-menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu" id="nav-menu" role="navigation">
+      <li><a href="#s-about"    class="nlink">About</a></li>
+      <li><a href="#s-centres"  class="nlink">Centres</a></li>
+      <li><a href="#s-carla"    class="nlink">Carla Home</a></li>
+      <li><a href="#s-life"     class="nlink">Student Life</a></li>
+      <li><a href="#s-programs" class="nlink">Programs</a></li>
+      <li><a href="#s-gallery"  class="nlink">Gallery</a></li>
+      <li><a href="#s-notices"  class="nlink">Notices</a></li>
+      <li><a href="#s-contact"  class="nlink nlink-cta">Contact</a></li>
+    </ul>
   </div>
+</header>
 
-  <!-- ABOUT -->
-  <section id="about-sec" class="sec bg-cream">
-    <div class="container">
-      <div class="sec-eyebrow">Who We Are</div>
-      <h2 class="sec-title">More Than a Hostel.<br />A Home That Shapes You.</h2>
-      <div class="about-grid">
-        <div class="about-left">
-          <p class="about-lead">Mettaloka Youth Centre has been a quiet pillar of Mysuru since 2003 — providing a home, a structure, and a brotherhood to young men stepping forward after Carla Home.</p>
-          <p>When a student walks into Mettaloka, they carry the values already instilled at Mahabodhi — meditation, discipline, character. Here, those values meet the demands of higher education. Students find not just accommodation and meals, but a living framework that helps them focus, grow, and become.</p>
-          <p>We believe the years after 10th standard are defining. The environment you live in shapes the person you become. That is what Mettaloka is built to be — the right environment.</p>
-          <div class="pill-row">
-            <span>🤝 Brotherhood</span>
-            <span>📚 Education</span>
-            <span>⚖️ Discipline</span>
-            <span>🌱 Growth</span>
-            <span>☸️ Dhamma Values</span>
-          </div>
-        </div>
-        <div class="about-right">
-          <div class="ac ac-orange fu"><span class="ac-icon">🏠</span><h3>A Home Away from Home</h3><p>Safe accommodation, nourishing meals, and a community that genuinely looks out for one another.</p></div>
-          <div class="ac ac-stone fu"><span class="ac-icon">📖</span><h3>Focused Study Environment</h3><p>Structured routines and a distraction-free setting built for real academic focus and achievement.</p></div>
-          <div class="ac ac-forest fu"><span class="ac-icon">🌟</span><h3>Character First</h3><p>Beyond textbooks — responsibility, compassion, and the spirit of becoming a good human being.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CENTRES -->
-  <section id="centres-sec" class="sec bg-stone">
-    <div class="container">
-      <div class="sec-eyebrow">Our Centres</div>
-      <h2 class="sec-title">Two Centres, One Spirit</h2>
-      <p class="sec-sub">Specialised environments for different academic streams — united by the same values and roots.</p>
-      <div class="centres-grid">
-        <div class="cc fu">
-          <div class="cc-top cc-sci"><span class="cc-ico">🔬</span><span class="cc-badge">Science Stream</span></div>
-          <div class="cc-body">
-            <h3>Science Mettaloka</h3>
-            <p class="cc-loc">📍 Jayalakshmi, Mysuru</p>
-            <p>A dedicated space for PUC Science students pursuing medicine, engineering, and allied fields — built for rigorous study and consistent discipline.</p>
-            <div class="cc-mgr"><span>Managed by</span><strong>Panya Bodh</strong></div>
-            <div class="cc-tags"><span>Physics</span><span>Chemistry</span><span>Mathematics</span><span>Biology</span></div>
-          </div>
-        </div>
-        <div class="cc fu">
-          <div class="cc-top cc-art"><span class="cc-ico">📐</span><span class="cc-badge">Arts &amp; Commerce</span></div>
-          <div class="cc-body">
-            <h3>Arts &amp; Commerce Mettaloka</h3>
-            <p class="cc-loc">📍 Mysuru</p>
-            <p>For Arts and Commerce students at PUC and Degree level. Co-managed by Rinchen and Chiranjit C — both currently in their Science Degree — leading from within while pursuing their own studies.</p>
-            <div class="cc-mgr"><span>Managed by</span><strong>Rinchen &amp; Chiranjit C <em>(Science Degree students)</em></strong></div>
-            <div class="cc-tags"><span>Economics</span><span>History</span><span>Accountancy</span><span>Commerce</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CARLA HOME -->
-  <section id="carla-sec" class="sec bg-dark">
-    <div class="container">
-      <div class="sec-eyebrow ew-lt">Our Roots</div>
-      <h2 class="sec-title st-lt">Mahabodhi Carla Students Home</h2>
-      <p class="sec-sub sb-lt">Mettaloka is exclusively for students who have passed their 10th standard from Mahabodhi Carla Students Home, Mysuru. This is not an open hostel — it is a continuation of the same journey.</p>
-      <div class="carla-grid">
-        <div class="carla-left">
-          <div class="carla-stats">
-            <div class="cstat fu"><b>180</b><span>Children from across India</span></div>
-            <div class="cstat fu"><b>8</b><span>Dormitories &amp; House Fathers</span></div>
-            <div class="cstat fu"><b>2</b><span>Monks — spiritual guidance</span></div>
-            <div class="cstat fu"><b>17</b><span>Support staff members</span></div>
-          </div>
-          <p class="cp">Mahabodhi Carla Students Home is home to 180 children hailing from different parts of India. Two monks provide spiritual guidance through daily chanting and meditation — practised every morning and evening — along with intensive Dhamma classes and meditation courses during vacations.</p>
-          <p class="cp">The home places its strongest emphasis on <strong>character building and moral education</strong>. Students develop creativity through summer camps, extracurricular activities, and handicrafts — drawing, painting, cooking, gardening, and music — building confidence that stays with them through life.</p>
-          <p class="cp">Eight House Fathers serve as wardens across eight dormitories, and 17 additional staff ensure every child is nourished, cared for, and given the best foundation for their future.</p>
-          <a href="https://www.mahabodhischoolmysore.edu.in/facilities/carla-student-home/" target="_blank" rel="noopener" class="ext-link">Visit Carla Home Website ↗</a>
-        </div>
-        <div class="carla-right">
-          <p class="steps-hdg">How Students Join Mettaloka</p>
-          <div class="step fu"><span class="sn">01</span><div><strong>Complete 10th at Carla Home</strong><p>Only students who have finished 10th standard at Mahabodhi Carla Students Home, Mysuru are considered for Mettaloka.</p></div></div>
-          <div class="step fu"><span class="sn">02</span><div><strong>Character-Based Selection</strong><p>Students are chosen based on values, commitment to discipline, and readiness for higher education in Mysuru.</p></div></div>
-          <div class="step fu"><span class="sn">03</span><div><strong>No Open Applications</strong><p>Mettaloka does not accept outside applications. There is no public admission process — selection happens entirely through Carla Home.</p></div></div>
-          <div class="step fu"><span class="sn">04</span><div><strong>A Continuation, Not a New Start</strong><p>Joining Mettaloka is a continuation of the path of Dhamma, discipline, and brotherhood that began at Carla Home.</p></div></div>
-          <div class="closed-note">☸️ Mettaloka is a closed, values-based community — not a commercial hostel. All residents share the same roots at Mahabodhi.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- STUDENT LIFE -->
-  <section id="life-sec" class="sec bg-cream">
-    <div class="container">
-      <div class="sec-eyebrow">Student Life</div>
-      <h2 class="sec-title">Discipline is the Foundation</h2>
-      <p class="sec-sub">A structured daily life that builds independence, responsibility, and lasting focus.</p>
-      <div class="life-grid">
-
-        <div class="lc fu">
-          <div class="lc-hd"><span>⏰</span><h3>Daily Schedule</h3></div>
-          <div class="lc-bd">
-            <div class="sched">
-              <div class="sr"><span class="st">5:30 AM</span><span class="sd"></span><span class="sa">Wake-up &amp; personal hygiene</span></div>
-              <div class="sr sr-hi"><span class="st">6:00 AM</span><span class="sd sd-a"></span><span class="sa">Morning prayer &amp; meditation ☸️</span></div>
-              <div class="sr"><span class="st">8:00 AM</span><span class="sd"></span><span class="sa">Breakfast &amp; college departure</span></div>
-              <div class="sr"><span class="st">1:00 PM</span><span class="sd"></span><span class="sa">Lunch &amp; afternoon rest</span></div>
-              <div class="sr"><span class="st">4:00 PM</span><span class="sd"></span><span class="sa">Free time &amp; activities</span></div>
-              <div class="sr"><span class="st">7:00 PM</span><span class="sd"></span><span class="sa">Dinner</span></div>
-              <div class="sr"><span class="st">8:00 PM</span><span class="sd"></span><span class="sa">Evening study hours</span></div>
-              <div class="sr sr-dim"><span class="st st-d">11:00 PM</span><span class="sd sd-d"></span><span class="sa sa-d">Suggested rest time</span></div>
-            </div>
-            <div class="info-box">
-              <strong>After 11 PM:</strong> Students who wish to study may continue — lights off is not compulsory. Rest is encouraged but the choice belongs to each student. Good sleep is good discipline.
-            </div>
-          </div>
-        </div>
-
-        <div class="lc fu">
-          <div class="lc-hd"><span>📱</span><h3>Phone Policy</h3></div>
-          <div class="lc-bd">
-            <div class="ph-block ph-green">
-              <div class="ph-lbl">Degree Students</div>
-              <p>Smartphones are permitted for academic purposes — research, digital notes, and study tools. Responsible usage is expected at all times.</p>
-            </div>
-            <div class="ph-block ph-amber">
-              <div class="ph-lbl ph-lbl-a">PUC Students</div>
-              <p>Basic phones only — ensuring complete focus during the most critical years of foundational education.</p>
-            </div>
-            <div class="info-box" style="margin-top:1rem;">📌 Phone use is a matter of trust. Misuse affects the whole community, not just the individual.</div>
-          </div>
-        </div>
-
-        <div class="lc fu">
-          <div class="lc-hd"><span>💼</span><h3>Responsibility</h3></div>
-          <div class="lc-bd">
-            <p class="resp-intro">Students at Mettaloka are trusted adults. Managing their own affairs is part of the growth.</p>
-            <ul class="resp-ul">
-              <li><span>✔</span>Fees managed independently by each student</li>
-              <li><span>✔</span>Self-discipline upheld during study hours</li>
-              <li><span>✔</span>Active contribution to community upkeep</li>
-              <li><span>✔</span>Senior students mentor and guide juniors</li>
-              <li><span>✔</span>Conflicts resolved within the brotherhood</li>
-              <li><span>✔</span>Punctuality and attendance self-managed</li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- PROGRAMS -->
-  <section id="prog-sec" class="sec bg-dark">
-    <div class="container">
-      <div class="sec-eyebrow ew-lt">Programs</div>
-      <h2 class="sec-title st-lt">Life Beyond the Classroom</h2>
-      <p class="sec-sub sb-lt">A rich calendar of activities that nurture the whole person — not just the student.</p>
-      <div class="prog-grid">
-        <div class="pg fu"><div class="pg-top"><span class="pg-icon">🎙️</span><span class="pg-freq">Every Sunday</span></div><h3>Sunday Seminars</h3><p>Weekly gatherings where students engage with ideas, hear from speakers, and develop perspectives beyond the classroom — a cornerstone of Mettaloka culture since the very beginning.</p></div>
-        <div class="pg fu"><div class="pg-top"><span class="pg-icon">🌍</span><span class="pg-freq">Regular</span></div><h3>Community Service</h3><p>Students actively engage in outreach and social service — nurturing empathy, humility, and responsibility toward the broader community, rooted in Dhamma values.</p></div>
-        <div class="pg fu"><div class="pg-top"><span class="pg-icon">🏏</span><span class="pg-freq">Seasonal</span></div><h3>MPL – Mettaloka Premier League</h3><p>The in-house sports tournament uniting both centres in healthy competition. The MPL is one of the most anticipated and celebrated events of the year.</p></div>
-        <div class="pg fu"><div class="pg-top"><span class="pg-icon">📋</span><span class="pg-freq">Monthly</span></div><h3>Monthly Meetings</h3><p>Structured gatherings where students voice concerns, plan ahead, and collectively strengthen the community — a democratic space where every voice genuinely matters.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALLERY -->
-  <section id="gallery-sec" class="sec bg-stone">
-    <div class="container">
-      <div class="sec-eyebrow">Gallery</div>
-      <h2 class="sec-title">Life at Mettaloka</h2>
-      <p class="sec-sub">Real moments from our community — study, sport, service, and celebration.</p>
-    </div>
-    <div class="gallery-masonry" id="gallery-grid">
-      <div class="gi" data-i="0"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20events%201.jpg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-      <div class="gi" data-i="1"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20Moments%201.jpg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-      <div class="gi" data-i="2"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20Involvement%201.jpeg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-      <div class="gi" data-i="3"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20events%202.jpg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-      <div class="gi" data-i="4"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20Moments%202.jpg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-      <div class="gi" data-i="5"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20Involvement%202.jpeg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-      <div class="gi" data-i="6"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20events%203.jpg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-      <div class="gi" data-i="7"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20Moments%203.jpg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-      <div class="gi" data-i="8"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20Involvement%203.jpeg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-      <div class="gi" data-i="9"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20Moments%204.jpg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-      <div class="gi" data-i="10"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20Involvement%204.jpeg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-      <div class="gi" data-i="11"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20Moments%205.jpg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-      <div class="gi" data-i="12"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20Moments%206.jpg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-      <div class="gi" data-i="13"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20Moments%207.jpg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-      <div class="gi" data-i="14"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.43.50%20(1).jpeg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-      <div class="gi" data-i="15"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.43.50%20(2).jpeg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-      <div class="gi" data-i="16"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.43.53.jpeg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-      <div class="gi" data-i="17"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.43.53%20(2).jpeg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-      <div class="gi" data-i="18"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.43.53%20(3).jpeg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-      <div class="gi" data-i="19"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.43.53%20(4).jpeg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-      <div class="gi" data-i="20"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.43.53%20(5).jpeg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-      <div class="gi" data-i="21"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.43.53%20(6).jpeg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-      <div class="gi" data-i="22"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.43.53%20(7).jpeg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-      <div class="gi" data-i="23"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.43.53%20(8).jpeg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-      <div class="gi" data-i="24"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.43.53%20(9).jpeg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-      <div class="gi" data-i="25"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.43.53%20(10).jpeg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-      <div class="gi" data-i="26"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.44.59.jpeg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-      <div class="gi" data-i="27"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.45.22.jpeg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-      <div class="gi" data-i="28"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.46.29.jpeg" alt="Mettaloka" loading="lazy" /><div class="gi-veil"></div></div>
-    </div>
-  </section>
-
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox">
-    <button class="lb-x" id="lb-x">&#10005;</button>
-    <button class="lb-arr lb-p" id="lb-prev">&#8249;</button>
-    <div class="lb-img-box"><img id="lb-img" src="" alt="Photo" /></div>
-    <button class="lb-arr lb-n" id="lb-next">&#8250;</button>
-    <span class="lb-cnt" id="lb-cnt"></span>
+<!-- ═══════════════════════════════════
+     HERO
+═══════════════════════════════════ -->
+<section id="s-hero" class="hero">
+  <div class="hero-slides" id="hero-slides-wrap">
+    <div class="hs on" style="background-image:url('https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20hero%201%20-%20Copy.jpg')"></div>
+    <div class="hs"    style="background-image:url('https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20hero%202.jpeg')"></div>
+    <div class="hs"    style="background-image:url('https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20hero%203.jpeg')"></div>
+    <div class="hs"    style="background-image:url('https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20hero%204.jpeg')"></div>
   </div>
+  <div class="hero-dim"></div>
+  <div class="hero-body">
+    <p class="hero-pill">Est. 2003 &nbsp;&middot;&nbsp; Mysuru, India</p>
+    <h1 class="hero-h1">Mettaloka<br><em>Youth Centre</em></h1>
+    <p class="hero-tag">Brotherhood &nbsp;&middot;&nbsp; Discipline &nbsp;&middot;&nbsp; Learning</p>
+    <a href="#s-about" class="hero-btn">Discover Our Story</a>
+  </div>
+  <div class="hero-dots-row" id="hero-dots-row"></div>
+</section>
 
-  <!-- NOTICES -->
-  <section id="notices-sec" class="sec bg-dark">
-    <div class="container">
-      <div class="sec-eyebrow ew-lt">Notice Board</div>
-      <h2 class="sec-title st-lt">Latest Updates</h2>
-      <div class="edit-note-pill">✏️ <strong>Editable / Replace Later</strong> — Update notices manually in the HTML code.</div>
-      <div class="notices-layout">
+<!-- ═══════════════════════════════════
+     STATS BAR
+═══════════════════════════════════ -->
+<div class="stats-strip">
+  <div class="ss-item"><b class="ss-num" data-to="2003">2003</b><span>Founded</span></div>
+  <div class="ss-div"></div>
+  <div class="ss-item"><b class="ss-num" data-to="2">2</b><span>Active Centres</span></div>
+  <div class="ss-div"></div>
+  <div class="ss-item"><b class="ss-num" data-to="20" data-sfx="+">20+</b><span>Years of Service</span></div>
+  <div class="ss-div"></div>
+  <div class="ss-item"><b class="ss-num" data-to="180">180</b><span>Carla Home Children</span></div>
+</div>
+
+<!-- ═══════════════════════════════════
+     ABOUT
+═══════════════════════════════════ -->
+<section id="s-about" class="sec bg-c">
+  <div class="ctr">
+    <div class="eyebrow">Who We Are</div>
+    <h2 class="sec-h">More Than a Hostel.<br>A Home That Shapes You.</h2>
+    <div class="about-grid">
+      <div class="about-left">
+        <p class="about-lead">Mettaloka Youth Centre has been a quiet pillar of Mysuru since 2003 — providing a home, a structure, and a brotherhood to young men stepping forward after Carla Home.</p>
+        <p>When a student walks into Mettaloka, they carry the values already instilled at Mahabodhi — meditation, discipline, character. Here, those values meet the demands of higher education. Students find not just accommodation and meals, but a living framework that helps them focus, grow, and become.</p>
+        <p>We believe the years after 10th standard are defining. The environment you live in shapes the person you become. That is what Mettaloka is built to be — the right environment.</p>
+        <div class="pill-row">
+          <span>🤝 Brotherhood</span>
+          <span>📚 Education</span>
+          <span>⚖️ Discipline</span>
+          <span>🌱 Growth</span>
+          <span>☸️ Dhamma Values</span>
+        </div>
+      </div>
+      <div class="about-right">
+        <div class="ac ac-a reveal"><span class="ac-icon">🏠</span><h3>A Home Away from Home</h3><p>Safe accommodation, nourishing meals, and a community that genuinely looks out for one another.</p></div>
+        <div class="ac ac-b reveal"><span class="ac-icon">📖</span><h3>Focused Study Environment</h3><p>Structured routines and a distraction-free setting built for real academic focus and achievement.</p></div>
+        <div class="ac ac-c reveal"><span class="ac-icon">🌟</span><h3>Character First</h3><p>Beyond textbooks — responsibility, compassion, and the spirit of becoming a good human being.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     CENTRES
+═══════════════════════════════════ -->
+<section id="s-centres" class="sec bg-s">
+  <div class="ctr">
+    <div class="eyebrow">Our Centres</div>
+    <h2 class="sec-h">Two Centres, One Spirit</h2>
+    <p class="sec-s">Specialised environments for different academic streams — united by the same values and roots.</p>
+    <div class="centres-grid">
+
+      <div class="cc-card reveal">
+        <div class="cc-top cc-sci">
+          <span class="cc-ico">🔬</span>
+          <span class="cc-badge">Science Stream</span>
+        </div>
+        <div class="cc-body">
+          <h3>Science Mettaloka</h3>
+          <p class="cc-loc">📍 Jayalakshmi, Mysuru</p>
+          <p>A dedicated space for PUC Science students pursuing medicine, engineering, and allied fields — built for rigorous study and consistent discipline.</p>
+          <div class="cc-mgr"><span>Managed by</span><strong>Panya Bodh</strong></div>
+          <div class="cc-tags"><span>Physics</span><span>Chemistry</span><span>Mathematics</span><span>Biology</span></div>
+        </div>
+      </div>
+
+      <div class="cc-card reveal">
+        <div class="cc-top cc-art">
+          <span class="cc-ico">📐</span>
+          <span class="cc-badge">Arts &amp; Commerce</span>
+        </div>
+        <div class="cc-body">
+          <h3>Arts &amp; Commerce Mettaloka</h3>
+          <p class="cc-loc">📍 Mysuru</p>
+          <p>For Arts and Commerce students at PUC and Degree level. Co-managed by Rinchen and Chiranjit C — both currently in their Science Degree — leading from within while pursuing their own studies.</p>
+          <div class="cc-mgr"><span>Managed by</span><strong>Rinchen &amp; Chiranjit C <em>(Science Degree students)</em></strong></div>
+          <div class="cc-tags"><span>Economics</span><span>History</span><span>Accountancy</span><span>Commerce</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     CARLA HOME
+═══════════════════════════════════ -->
+<section id="s-carla" class="sec bg-d">
+  <div class="ctr">
+    <div class="eyebrow eyebrow-lt">Our Roots</div>
+    <h2 class="sec-h sec-hl">Mahabodhi Carla Students Home</h2>
+    <p class="sec-s sec-sl">Mettaloka is exclusively for students who have passed their 10th standard from Mahabodhi Carla Students Home, Mysuru. This is not an open hostel — it is a continuation of the same journey.</p>
+    <div class="carla-grid">
+
+      <div class="carla-left">
+        <div class="carla-stats">
+          <div class="cstat reveal"><b>180</b><span>Children from across India</span></div>
+          <div class="cstat reveal"><b>8</b><span>Dormitories &amp; House Fathers</span></div>
+          <div class="cstat reveal"><b>2</b><span>Monks — spiritual guidance</span></div>
+          <div class="cstat reveal"><b>17</b><span>Support staff members</span></div>
+        </div>
+        <p class="cp">Mahabodhi Carla Students Home is home to 180 children hailing from different parts of India. Two monks provide spiritual guidance through daily chanting and meditation — practised every morning and evening — along with intensive Dhamma classes and meditation courses during vacations.</p>
+        <p class="cp">The home places its strongest emphasis on <strong>character building and moral education</strong>. Students develop creativity through summer camps, extracurricular activities, and handicrafts — drawing, painting, cooking, gardening, and music — building confidence that stays with them through life.</p>
+        <p class="cp">Eight House Fathers serve as wardens across eight dormitories, and 17 additional staff ensure every child is nourished, cared for, and given the best foundation for their future.</p>
+        <a href="https://www.mahabodhischoolmysore.edu.in/facilities/carla-student-home/" target="_blank" rel="noopener" class="ext-btn">Visit Carla Home Website ↗</a>
+      </div>
+
+      <div class="carla-right">
+        <p class="steps-hd">How Students Join Mettaloka</p>
+        <div class="step reveal"><span class="sn">01</span><div><strong>Complete 10th at Carla Home</strong><p>Only students who have finished 10th standard at Mahabodhi Carla Students Home, Mysuru are considered for Mettaloka.</p></div></div>
+        <div class="step reveal"><span class="sn">02</span><div><strong>Character-Based Selection</strong><p>Students are chosen based on values, commitment to discipline, and readiness for higher education in Mysuru.</p></div></div>
+        <div class="step reveal"><span class="sn">03</span><div><strong>No Open Applications</strong><p>Mettaloka does not accept outside applications. There is no public admission process — selection happens entirely through Carla Home.</p></div></div>
+        <div class="step reveal"><span class="sn">04</span><div><strong>A Continuation, Not a New Start</strong><p>Joining Mettaloka is a continuation of the path of Dhamma, discipline, and brotherhood that began at Carla Home.</p></div></div>
+        <div class="closed-note">☸️ Mettaloka is a closed, values-based community — not a commercial hostel. All residents share the same roots at Mahabodhi.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     STUDENT LIFE
+═══════════════════════════════════ -->
+<section id="s-life" class="sec bg-c">
+  <div class="ctr">
+    <div class="eyebrow">Student Life</div>
+    <h2 class="sec-h">Discipline is the Foundation</h2>
+    <p class="sec-s">A structured daily life that builds independence, responsibility, and lasting focus.</p>
+    <div class="life-grid">
+
+      <div class="lc reveal">
+        <div class="lc-hd"><span>⏰</span><h3>Daily Schedule</h3></div>
+        <div class="lc-bd">
+          <div class="sched">
+            <div class="sr"><span class="st">5:30 AM</span><span class="sd"></span><span class="sa">Wake-up &amp; personal hygiene</span></div>
+            <div class="sr sr-hi"><span class="st">6:00 AM</span><span class="sd sd-a"></span><span class="sa">Morning prayer &amp; meditation ☸️</span></div>
+            <div class="sr"><span class="st">8:00 AM</span><span class="sd"></span><span class="sa">Breakfast &amp; college departure</span></div>
+            <div class="sr"><span class="st">1:00 PM</span><span class="sd"></span><span class="sa">Lunch &amp; afternoon rest</span></div>
+            <div class="sr"><span class="st">4:00 PM</span><span class="sd"></span><span class="sa">Free time &amp; activities</span></div>
+            <div class="sr"><span class="st">7:00 PM</span><span class="sd"></span><span class="sa">Dinner</span></div>
+            <div class="sr"><span class="st">8:00 PM</span><span class="sd"></span><span class="sa">Evening study hours</span></div>
+            <div class="sr"><span class="st st-d">11:00 PM</span><span class="sd sd-d"></span><span class="sa sa-d">Suggested rest time</span></div>
+          </div>
+          <div class="info-box"><strong>After 11 PM:</strong> Students who wish to study may continue — lights off is not compulsory. Rest is encouraged but the choice belongs to each student. Good sleep is good discipline.</div>
+        </div>
+      </div>
+
+      <div class="lc reveal">
+        <div class="lc-hd"><span>📱</span><h3>Phone Policy</h3></div>
+        <div class="lc-bd">
+          <div class="ph-block ph-g">
+            <div class="ph-lbl">Degree Students</div>
+            <p>Smartphones are permitted for academic purposes — research, digital notes, and study tools. Responsible usage is expected at all times.</p>
+          </div>
+          <div class="ph-block ph-a">
+            <div class="ph-lbl ph-lbl-a">PUC Students</div>
+            <p>Basic phones only — ensuring complete focus during the most critical years of foundational education.</p>
+          </div>
+          <div class="info-box" style="margin-top:1rem;">📌 Phone use is a matter of trust. Misuse affects the whole community, not just the individual.</div>
+        </div>
+      </div>
+
+      <div class="lc reveal">
+        <div class="lc-hd"><span>💼</span><h3>Responsibility</h3></div>
+        <div class="lc-bd">
+          <p class="resp-intro">Students at Mettaloka are trusted adults. Managing their own affairs is part of the growth.</p>
+          <ul class="resp-ul">
+            <li><span>✔</span>Fees managed independently by each student</li>
+            <li><span>✔</span>Self-discipline upheld during study hours</li>
+            <li><span>✔</span>Active contribution to community upkeep</li>
+            <li><span>✔</span>Senior students mentor and guide juniors</li>
+            <li><span>✔</span>Conflicts resolved within the brotherhood</li>
+            <li><span>✔</span>Punctuality and attendance self-managed</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     PROGRAMS
+═══════════════════════════════════ -->
+<section id="s-programs" class="sec bg-d">
+  <div class="ctr">
+    <div class="eyebrow eyebrow-lt">Programs</div>
+    <h2 class="sec-h sec-hl">Life Beyond the Classroom</h2>
+    <p class="sec-s sec-sl">A rich calendar of activities that nurture the whole person — not just the student.</p>
+    <div class="prog-grid">
+      <div class="pg reveal">
+        <div class="pg-top"><span class="pg-icon">🎙️</span><span class="pg-freq">Every Sunday</span></div>
+        <h3>Sunday Seminars</h3>
+        <p>Weekly gatherings where students engage with ideas, hear from speakers, and develop perspectives beyond the classroom — a cornerstone of Mettaloka culture since the beginning.</p>
+      </div>
+      <div class="pg reveal">
+        <div class="pg-top"><span class="pg-icon">🌍</span><span class="pg-freq">Regular</span></div>
+        <h3>Community Service</h3>
+        <p>Students actively engage in outreach and social service — nurturing empathy, humility, and responsibility toward the broader community, rooted in Dhamma values.</p>
+      </div>
+      <div class="pg reveal">
+        <div class="pg-top"><span class="pg-icon">🏏</span><span class="pg-freq">Seasonal</span></div>
+        <h3>MPL – Mettaloka Premier League</h3>
+        <p>The in-house sports tournament uniting both centres in healthy competition. The MPL is one of the most anticipated and celebrated events of the year.</p>
+      </div>
+      <div class="pg reveal">
+        <div class="pg-top"><span class="pg-icon">📋</span><span class="pg-freq">Monthly</span></div>
+        <h3>Monthly Meetings</h3>
+        <p>Structured gatherings where students voice concerns, plan ahead, and collectively strengthen the community — a democratic space where every voice genuinely matters.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     GALLERY
+═══════════════════════════════════ -->
+<section id="s-gallery" class="sec bg-s">
+  <div class="ctr">
+    <div class="eyebrow">Gallery</div>
+    <h2 class="sec-h">Life at Mettaloka</h2>
+    <p class="sec-s">Real moments from our community — study, sport, service, and celebration.</p>
+  </div>
+  <div class="gallery-masonry" id="gallery-grid">
+    <div class="gi" data-i="0"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20events%201.jpg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+    <div class="gi" data-i="1"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20Moments%201.jpg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+    <div class="gi" data-i="2"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20Involvement%201.jpeg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+    <div class="gi" data-i="3"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20events%202.jpg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+    <div class="gi" data-i="4"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20Moments%202.jpg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+    <div class="gi" data-i="5"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20Involvement%202.jpeg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+    <div class="gi" data-i="6"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20events%203.jpg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+    <div class="gi" data-i="7"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20Moments%203.jpg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+    <div class="gi" data-i="8"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20Involvement%203.jpeg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+    <div class="gi" data-i="9"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20Moments%204.jpg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+    <div class="gi" data-i="10"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20Involvement%204.jpeg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+    <div class="gi" data-i="11"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20Moments%205.jpg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+    <div class="gi" data-i="12"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20Moments%206.jpg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+    <div class="gi" data-i="13"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/mmyc%20Moments%207.jpg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+    <div class="gi" data-i="14"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.43.50%20(1).jpeg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+    <div class="gi" data-i="15"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.43.50%20(2).jpeg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+    <div class="gi" data-i="16"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.43.53.jpeg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+    <div class="gi" data-i="17"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.43.53%20(2).jpeg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+    <div class="gi" data-i="18"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.43.53%20(3).jpeg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+    <div class="gi" data-i="19"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.43.53%20(4).jpeg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+    <div class="gi" data-i="20"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.43.53%20(5).jpeg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+    <div class="gi" data-i="21"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.43.53%20(6).jpeg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+    <div class="gi" data-i="22"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.43.53%20(7).jpeg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+    <div class="gi" data-i="23"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.43.53%20(8).jpeg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+    <div class="gi" data-i="24"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.43.53%20(9).jpeg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+    <div class="gi" data-i="25"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.43.53%20(10).jpeg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+    <div class="gi" data-i="26"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.44.59.jpeg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+    <div class="gi" data-i="27"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.45.22.jpeg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+    <div class="gi" data-i="28"><img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/WhatsApp%20Image%202026-04-20%20at%2010.46.29.jpeg" alt="Mettaloka" loading="lazy"><div class="gi-veil"></div></div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-x" id="lb-x">&#10005;</button>
+  <button class="lb-arr lb-prev" id="lb-prev">&#8249;</button>
+  <div class="lb-img-box"><img id="lb-img" src="" alt="Photo"></div>
+  <button class="lb-arr lb-next" id="lb-next">&#8250;</button>
+  <span class="lb-cnt" id="lb-cnt"></span>
+</div>
+
+<!-- ═══════════════════════════════════
+     NOTICES
+═══════════════════════════════════ -->
+<section id="s-notices" class="sec bg-d">
+  <div class="ctr">
+    <div class="eyebrow eyebrow-lt">Notice Board</div>
+    <h2 class="sec-h sec-hl">Latest Updates</h2>
+    <div class="edit-pill">✏️ <strong>Editable / Replace Later</strong> — Update notices manually in the HTML code.</div>
+    <div class="notices-layout">
+      <div>
+        <p class="pin-lbl">📌 Pinned Notice</p>
+        <div class="nc nc-pin reveal">
+          <div class="nc-meta"><span class="nc-date">April 2025</span><span class="nbadge nb-a">Announcement</span></div>
+          <h4>New Academic Year — 2025–26</h4>
+          <p>Students who completed 10th at Mahabodhi Carla Students Home are encouraged to speak with their House Father or the centre management. Selection follows the usual process.</p>
+          <span class="nc-edit">Editable / Replace Later</span>
+        </div>
+      </div>
+      <div class="nc-grid">
+        <div class="nc reveal"><div class="nc-meta"><span class="nc-date">Mar 15, 2025</span><span class="nbadge nb-e">Event</span></div><h4>MPL 2025 Results Announced</h4><p>The Mettaloka Premier League 2025 concluded with great energy — results posted on the centre board.</p><span class="nc-edit">Editable / Replace Later</span></div>
+        <div class="nc reveal"><div class="nc-meta"><span class="nc-date">Mar 2, 2025</span><span class="nbadge nb-s">Seminar</span></div><h4>Sunday Seminar: Life After PUC</h4><p>This month's seminar explored career pathways after PUC — an insightful session with senior alumni.</p><span class="nc-edit">Editable / Replace Later</span></div>
+        <div class="nc reveal"><div class="nc-meta"><span class="nc-date">Feb 20, 2025</span><span class="nbadge nb-m">Message</span></div><h4>February Monthly Meeting Summary</h4><p>The meeting addressed exam schedules, maintenance responsibilities, and March service plans.</p><span class="nc-edit">Editable / Replace Later</span></div>
+        <div class="nc reveal"><div class="nc-meta"><span class="nc-date">Feb 5, 2025</span><span class="nbadge nb-a">Announcement</span></div><h4>Community Service Drive</h4><p>Students from both centres participated in a community service drive — a proud moment for the brotherhood.</p><span class="nc-edit">Editable / Replace Later</span></div>
+        <div class="nc reveal"><div class="nc-meta"><span class="nc-date">Jan 12, 2025</span><span class="nbadge nb-p">Poster</span></div><h4>Annual Gathering 2025 — Save the Date</h4><p>The annual Mettaloka gathering will be announced soon. All students, alumni, and well-wishers are welcome.</p><span class="nc-edit">Editable / Replace Later</span></div>
+        <div class="nc reveal"><div class="nc-meta"><span class="nc-date">Jan 5, 2025</span><span class="nbadge nb-m">Message</span></div><h4>Welcome to New Students 2025</h4><p>A warm welcome to all joining this year — part of a family built on brotherhood, trust, and shared dreams.</p><span class="nc-edit">Editable / Replace Later</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-band">
+  <blockquote>"At Mettaloka, we do not just make students —<br>we make <em>good human beings</em>."</blockquote>
+</div>
+
+<!-- ═══════════════════════════════════
+     CONTACT
+═══════════════════════════════════ -->
+<section id="s-contact" class="sec bg-c">
+  <div class="ctr">
+    <div class="eyebrow">Contact</div>
+    <h2 class="sec-h">Get in Touch</h2>
+    <p class="sec-s">For queries from parents or Carla Home students, or for general information about Mettaloka.</p>
+    <div class="contact-grid">
+      <div class="con-card reveal">
+        <h3 class="con-title">Contact Details</h3>
+        <div class="con-row"><span>📍</span><div><b>Location</b><p>Mysuru (Mysore), Karnataka, India</p></div></div>
+        <div class="con-row"><span>🏠</span><div><b>Science Mettaloka</b><p>Jayalakshmi, Mysuru<br><em>Managed by Panya Bodh</em></p></div></div>
+        <div class="con-row"><span>🏠</span><div><b>Arts &amp; Commerce Mettaloka</b><p>Mysuru<br><em>Managed by Rinchen &amp; Chiranjit C (Science Degree students)</em></p></div></div>
+        <div class="con-row"><span>📞</span><div><b>Phone / WhatsApp</b><p><a href="tel:+917349730142">+91 73497 30142</a></p></div></div>
+        <div class="con-row"><span>✉️</span><div><b>Email</b><p><a href="mailto:mahabodhimettalokamysuru@gmail.com">mahabodhimettalokamysuru@gmail.com</a></p></div></div>
+      </div>
+      <div class="con-card con-dark reveal">
+        <h3 class="con-title">About This Community</h3>
+        <p>Mettaloka Youth Centre is <strong>not an open hostel</strong>. We do not accept outside applications or requests from the general public.</p>
+        <p>All residents are selected from students who completed 10th standard at <strong>Mahabodhi Carla Students Home, Mysuru</strong>. Selection is based on character, readiness, and shared values.</p>
+        <p>If you are a student or parent from Carla Home and have questions, please reach out — we are happy to speak with you.</p>
+        <a href="https://www.mahabodhischoolmysore.edu.in/facilities/carla-student-home/" target="_blank" rel="noopener" class="ext-btn ext-btn-lt">Learn About Carla Home ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     FOOTER
+═══════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-in">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/MMYC%20Logo.jpeg" alt="MMYC" class="footer-logo">
         <div>
-          <p class="pin-lbl">📌 Pinned Notice</p>
-          <div class="nc nc-pin fu">
-            <div class="nc-meta"><span class="nc-date">April 2025</span><span class="nbadge nb-ann">Announcement</span></div>
-            <h4>New Academic Year — 2025–26</h4>
-            <p>Students who completed 10th at Mahabodhi Carla Students Home are encouraged to speak with their House Father or the centre management. Selection follows the usual process.</p>
-            <span class="nc-edit">Editable / Replace Later</span>
-          </div>
-        </div>
-        <div class="nc-grid">
-          <div class="nc fu"><div class="nc-meta"><span class="nc-date">Mar 15, 2025</span><span class="nbadge nb-event">Event</span></div><h4>MPL 2025 Results Announced</h4><p>The Mettaloka Premier League 2025 concluded with great energy — results posted on the centre board.</p><span class="nc-edit">Editable / Replace Later</span></div>
-          <div class="nc fu"><div class="nc-meta"><span class="nc-date">Mar 2, 2025</span><span class="nbadge nb-sem">Seminar</span></div><h4>Sunday Seminar: Life After PUC</h4><p>This month's seminar explored career pathways after PUC — an insightful session with senior alumni.</p><span class="nc-edit">Editable / Replace Later</span></div>
-          <div class="nc fu"><div class="nc-meta"><span class="nc-date">Feb 20, 2025</span><span class="nbadge nb-msg">Message</span></div><h4>February Monthly Meeting Summary</h4><p>The meeting addressed exam schedules, maintenance responsibilities, and March community service plans.</p><span class="nc-edit">Editable / Replace Later</span></div>
-          <div class="nc fu"><div class="nc-meta"><span class="nc-date">Feb 5, 2025</span><span class="nbadge nb-ann">Announcement</span></div><h4>Community Service Drive</h4><p>Students from both centres participated in a community service drive — a proud moment for the brotherhood.</p><span class="nc-edit">Editable / Replace Later</span></div>
-          <div class="nc fu"><div class="nc-meta"><span class="nc-date">Jan 12, 2025</span><span class="nbadge nb-post">Poster</span></div><h4>Annual Gathering 2025 — Save the Date</h4><p>The annual Mettaloka gathering will be announced soon. All students, alumni, and well-wishers are welcome.</p><span class="nc-edit">Editable / Replace Later</span></div>
-          <div class="nc fu"><div class="nc-meta"><span class="nc-date">Jan 5, 2025</span><span class="nbadge nb-msg">Message</span></div><h4>Welcome to New Students 2025</h4><p>A warm welcome to all joining this year — part of a family built on brotherhood, trust, and shared dreams.</p><span class="nc-edit">Editable / Replace Later</span></div>
+          <p class="ft-name">Mettaloka Youth Centre, Mysuru</p>
+          <p class="ft-unit">Unit of Mahabodhi Maitri Mandala, Mysuru</p>
+          <p class="ft-tag">Brotherhood &nbsp;&middot;&nbsp; Discipline &nbsp;&middot;&nbsp; Learning</p>
         </div>
       </div>
+      <nav class="footer-nav">
+        <a href="#s-about">About</a>
+        <a href="#s-centres">Centres</a>
+        <a href="#s-carla">Carla Home</a>
+        <a href="#s-life">Student Life</a>
+        <a href="#s-programs">Programs</a>
+        <a href="#s-gallery">Gallery</a>
+        <a href="#s-notices">Notices</a>
+        <a href="#s-contact">Contact</a>
+      </nav>
     </div>
-  </section>
-
-  <!-- QUOTE -->
-  <div class="quote-band">
-    <blockquote>"At Mettaloka, we do not just make students —<br />we make <em>good human beings</em>."</blockquote>
+    <div class="footer-btm">
+      <p>© 2003–2025 Mettaloka Youth Centre, Mysuru, Karnataka, India. All rights reserved.</p>
+      <p class="footer-love">Built with ❤️ for the Mettaloka Brotherhood</p>
+    </div>
   </div>
+</footer>
 
-  <!-- CONTACT -->
-  <section id="contact-sec" class="sec bg-cream">
-    <div class="container">
-      <div class="sec-eyebrow">Contact</div>
-      <h2 class="sec-title">Get in Touch</h2>
-      <p class="sec-sub">For queries from parents or Carla Home students, or for general information about Mettaloka.</p>
-      <div class="contact-grid">
-        <div class="contact-card fu">
-          <h3 class="cc-title">Contact Details</h3>
-          <div class="cr"><span>📍</span><div><b>Location</b><p>Mysuru (Mysore), Karnataka, India</p></div></div>
-          <div class="cr"><span>🏠</span><div><b>Science Mettaloka</b><p>Jayalakshmi, Mysuru<br /><em>Managed by Panya Bodh</em></p></div></div>
-          <div class="cr"><span>🏠</span><div><b>Arts &amp; Commerce Mettaloka</b><p>Mysuru<br /><em>Managed by Rinchen &amp; Chiranjit C (Science Degree students)</em></p></div></div>
-          <div class="cr"><span>📞</span><div><b>Phone / WhatsApp</b><p><a href="tel:+917349730142">+91 73497 30142</a></p></div></div>
-          <div class="cr"><span>✉️</span><div><b>Email</b><p><a href="mailto:mahabodhimettalokamysuru@gmail.com">mahabodhimettalokamysuru@gmail.com</a></p></div></div>
-        </div>
-        <div class="contact-card contact-dark fu">
-          <h3 class="cc-title">About This Community</h3>
-          <p>Mettaloka Youth Centre is <strong>not an open hostel</strong>. We do not accept outside applications or requests from the general public.</p>
-          <p>All residents are selected from students who completed 10th standard at <strong>Mahabodhi Carla Students Home, Mysuru</strong>. Selection is based on character, readiness, and shared values.</p>
-          <p>If you are a student or parent from Carla Home and have questions, please reach out — we are happy to speak with you.</p>
-          <a href="https://www.mahabodhischoolmysore.edu.in/facilities/carla-student-home/" target="_blank" rel="noopener" class="ext-link ext-link-lt">Learn About Carla Home ↗</a>
-        </div>
-      </div>
-    </div>
-  </section>
+<button id="btt" class="btt" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="18 15 12 9 6 15"></polyline>
+  </svg>
+</button>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="footer-in">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <img src="https://raw.githubusercontent.com/chiranjitchakma/METTALOKA-YOUTH-CENTRE-MYSORE-/main/MMYC%20Logo.jpeg" alt="MMYC" class="footer-logo" />
-          <div>
-            <p class="ft-name">Mettaloka Youth Centre, Mysuru</p>
-            <p class="ft-unit">Unit of Mahabodhi Maitri Mandala, Mysuru</p>
-            <p class="ft-tag">Brotherhood &nbsp;&middot;&nbsp; Discipline &nbsp;&middot;&nbsp; Learning</p>
-          </div>
-        </div>
-        <nav class="footer-nav">
-          <a href="#about-sec">About</a>
-          <a href="#centres-sec">Centres</a>
-          <a href="#carla-sec">Carla Home</a>
-          <a href="#life-sec">Student Life</a>
-          <a href="#prog-sec">Programs</a>
-          <a href="#gallery-sec">Gallery</a>
-          <a href="#notices-sec">Notices</a>
-          <a href="#contact-sec">Contact</a>
-        </nav>
-      </div>
-      <div class="footer-btm">
-        <p>© 2003–2025 Mettaloka Youth Centre, Mysuru, Karnataka, India. All rights reserved.</p>
-        <p class="footer-love">Built with ❤️ for the Mettaloka Brotherhood</p>
-      </div>
-    </div>
-  </footer>
-
-  <button id="btt" class="btt" aria-label="Back to top">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
-  </button>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
