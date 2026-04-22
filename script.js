@@ -336,34 +336,58 @@
     }
 
     /* ============================================================
-       10. SCHEDULE — highlight current time slot with green dot
+       10. SCHEDULE — highlight EXACTLY ONE current time slot
+           Uses data-from (hour), data-min (start minute),
+           data-to (end hour), data-tomin (end minute)
     ============================================================ */
     function highlightSchedule() {
-      var h = new Date().getHours(); /* 0–23 */
+      var now  = new Date();
+      var h    = now.getHours();   /* 0–23 */
+      var m    = now.getMinutes(); /* 0–59 */
+      var nowMins = h * 60 + m;   /* total minutes since midnight */
+
       var rows = document.querySelectorAll('.sr[data-from]');
+      var bestRow = null;
+
       rows.forEach(function (row) {
-        var from = parseInt(row.getAttribute('data-from'), 10);
-        var to   = parseInt(row.getAttribute('data-to'), 10);
-        var isNow;
-        if (from < to) {
-          isNow = (h >= from && h < to);
-        } else {
-          /* overnight slot e.g. 23→5 */
-          isNow = (h >= from || h < to);
-        }
+        /* Remove any existing highlight */
+        row.classList.remove('sr-now');
         var dot = row.querySelector('.sd');
-        if (isNow) {
-          row.classList.add('sr-now');
-          if (dot) { dot.classList.add('sd-now'); }
-        } else {
-          row.classList.remove('sr-now');
-          if (dot) { dot.classList.remove('sd-now'); }
+        if (dot) dot.classList.remove('sd-now');
+
+        var fH   = parseInt(row.getAttribute('data-from'),  10);
+        var fM   = parseInt(row.getAttribute('data-min')  || '0', 10);
+        var tH   = parseInt(row.getAttribute('data-to'),    10);
+        var tM   = parseInt(row.getAttribute('data-tomin') || '0', 10);
+
+        var startMins = fH * 60 + fM;
+        var endMins   = tH * 60 + tM;
+
+        var isNow = false;
+
+        if (endMins === 0 && tH === 6) {
+          /* Overnight slot: 11:15 PM → 6:00 AM */
+          isNow = (nowMins >= startMins || nowMins < 360); /* 360 = 6*60 */
+        } else if (startMins < endMins) {
+          isNow = (nowMins >= startMins && nowMins < endMins);
+        } else if (startMins === endMins) {
+          /* Wake-up slot at 6:00 — just the first minute */
+          isNow = (nowMins === startMins);
         }
+
+        if (isNow) bestRow = row;
       });
+
+      /* Apply green to ONLY the best matching row */
+      if (bestRow) {
+        bestRow.classList.add('sr-now');
+        var bd = bestRow.querySelector('.sd');
+        if (bd) bd.classList.add('sd-now');
+      }
     }
+
     highlightSchedule();
-    /* Re-check every minute in case page stays open across an hour boundary */
-    setInterval(highlightSchedule, 60000);
+    setInterval(highlightSchedule, 30000); /* re-check every 30s */
 
     /* ============================================================
        11. GALLERY VIEW MORE
