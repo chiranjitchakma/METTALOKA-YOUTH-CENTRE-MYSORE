@@ -23,59 +23,129 @@
     var LBCNT     = document.getElementById('lb-cnt');
 
     /* ============================================================
-       1. SCROLL REVEAL — CORRECT APPROACH
-       Elements are VISIBLE by default (opacity:1 in CSS).
-       JS adds .hidden to make them invisible, then .show to reveal.
-       This means content is ALWAYS visible even if JS is slow.
+       1. PREMIUM MOTION SYSTEM
+       ─ 4 reveal types: reveal / reveal-scale / reveal-left / reveal-right
+       ─ Auto-assigned by element type
+       ─ Staggered within sibling groups
+       ─ IntersectionObserver with rootMargin for smooth pre-reveal
+       ─ Elements always visible if JS slow (hidden only after rAF)
     ============================================================ */
-    var revEls = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
 
-    /* Step 1: Add .hidden to elements that are NOT in viewport */
+    /* Assign reveal types by element role */
+    function assignRevealTypes() {
+      /* About cards → scale */
+      document.querySelectorAll('.ac').forEach(function(el) {
+        el.classList.add('reveal-scale');
+      });
+      /* Carla stat boxes → scale */
+      document.querySelectorAll('.cstat').forEach(function(el) {
+        el.classList.add('reveal-scale');
+      });
+      /* Centre cards → scale */
+      document.querySelectorAll('.cc-card').forEach(function(el) {
+        el.classList.add('reveal-scale');
+      });
+      /* Programme cards → scale */
+      document.querySelectorAll('.pg').forEach(function(el) {
+        el.classList.add('reveal-scale');
+      });
+      /* Life cards → scale */
+      document.querySelectorAll('.lc').forEach(function(el) {
+        el.classList.add('reveal-scale');
+      });
+      /* About left → from left */
+      document.querySelectorAll('.about-left').forEach(function(el) {
+        el.classList.add('reveal', 'reveal-left');
+      });
+      /* About right → from right */
+      document.querySelectorAll('.about-right').forEach(function(el) {
+        el.classList.add('reveal', 'reveal-right');
+      });
+      /* Contact card left → from left */
+      var contactCards = document.querySelectorAll('.con-card');
+      if (contactCards[0]) contactCards[0].classList.add('reveal-left');
+      if (contactCards[1]) contactCards[1].classList.add('reveal-right');
+      /* Carla left → left, right → right */
+      var carlaLeft  = document.querySelector('.carla-left');
+      var carlaRight = document.querySelector('.carla-right');
+      if (carlaLeft)  carlaLeft.classList.add('reveal-left');
+      if (carlaRight) carlaRight.classList.add('reveal-right');
+    }
+
+    /* Stagger siblings within the same parent group */
+    function applyStagger() {
+      var groups = [
+        '.about-right',
+        '.carla-stats',
+        '.prog-grid',
+        '.centres-grid',
+        '.life-grid'
+      ];
+      groups.forEach(function(sel) {
+        var parent = document.querySelector(sel);
+        if (!parent) return;
+        var children = Array.prototype.slice.call(parent.children);
+        children.forEach(function(child, i) {
+          if (i < 6) child.classList.add('stagger-' + (i + 1));
+        });
+      });
+      /* Stagger step items */
+      document.querySelectorAll('.step').forEach(function(el, i) {
+        if (i < 6) el.classList.add('stagger-' + (i + 1));
+      });
+    }
+
+    /* Collect ALL reveal types */
+    var ALL_REVEAL = '.reveal, .reveal-scale, .reveal-left, .reveal-right';
+
+    function getAllRevealEls() {
+      return Array.prototype.slice.call(document.querySelectorAll(ALL_REVEAL));
+    }
+
     function initReveal() {
       var vh = window.innerHeight;
-      revEls.forEach(function (el) {
+      getAllRevealEls().forEach(function(el) {
         var r = el.getBoundingClientRect();
-        if (r.top > vh - 20) {
-          el.classList.add('hidden');
-        }
+        if (r.top > vh - 20) el.classList.add('hidden');
       });
     }
 
-    /* Step 2: Show elements when they enter viewport */
+    function triggerReveal(el) {
+      el.classList.add('show');
+      el.classList.remove('hidden');
+    }
+
     function checkReveal() {
       var vh = window.innerHeight;
-      revEls.forEach(function (el) {
-        if (el.classList.contains('hidden')) {
-          if (el.getBoundingClientRect().top < vh - 24) {
-            el.classList.add('show');
-            el.classList.remove('hidden');
-          }
+      getAllRevealEls().forEach(function(el) {
+        if (el.classList.contains('hidden') && el.getBoundingClientRect().top < vh - 24) {
+          triggerReveal(el);
         }
       });
     }
 
-    /* Use IntersectionObserver for performance */
+    /* Run type assignment and stagger first */
+    assignRevealTypes();
+    applyStagger();
+
     if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (en) {
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(en) {
           if (en.isIntersecting && en.target.classList.contains('hidden')) {
-            en.target.classList.add('show');
-            en.target.classList.remove('hidden');
+            triggerReveal(en.target);
             io.unobserve(en.target);
           }
         });
-      }, { threshold: 0.1, rootMargin: '0px 0px -24px 0px' });
+      }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
 
-      /* Wait a frame so initReveal runs first */
-      requestAnimationFrame(function () {
+      requestAnimationFrame(function() {
         initReveal();
-        revEls.forEach(function (el) {
+        getAllRevealEls().forEach(function(el) {
           if (el.classList.contains('hidden')) io.observe(el);
         });
       });
     } else {
-      /* Fallback */
-      requestAnimationFrame(function () {
+      requestAnimationFrame(function() {
         initReveal();
         window.addEventListener('scroll', checkReveal, { passive: true });
         checkReveal();
@@ -195,7 +265,7 @@
 
     function resetTimer() {
       clearInterval(sTimer);
-      sTimer = setInterval(function () { goSlide(curSlide + 1); }, 2500);
+      sTimer = setInterval(function () { goSlide(curSlide + 1); }, 1700);
     }
 
     if (slides.length > 1) resetTimer();
