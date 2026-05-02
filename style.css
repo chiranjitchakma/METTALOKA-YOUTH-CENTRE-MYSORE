@@ -1288,3 +1288,65 @@ p {font-size:.945rem;line-height:1.82}
   .btt{bottom:1rem}
   .music-btn{bottom:calc(1rem + 38px + 10px)}
 }
+
+/* ════════════════════════════════════════
+   SOCIAL MEDIA LINKS
+════════════════════════════════════════ */
+/* Footer social icons */
+.footer-social {
+  display: flex;
+  gap: .6rem;
+  margin-top: .7rem;
+}
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(217,123,28,.14);
+  border: 1px solid rgba(217,123,28,.28);
+  color: var(--accent-lt);
+  transition: background var(--T), border-color var(--T),
+              color var(--T), transform var(--T);
+}
+.social-link svg { width: 15px; height: 15px; display: block; }
+.social-link:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  transform: translateY(-3px) scale(1.1);
+}
+
+/* Contact section social links — with label text */
+.contact-social {
+  display: flex;
+  gap: .75rem;
+  margin-top: .5rem;
+  flex-wrap: wrap;
+}
+.social-link-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  width: auto;
+  padding: .38rem .85rem;
+  border-radius: 50px;
+  background: var(--stone);
+  border: 1px solid var(--brown-100);
+  color: var(--txt-2);
+  font-size: .8rem;
+  font-weight: 500;
+  font-family: var(--sans);
+  transition: background var(--T), border-color var(--T),
+              color var(--T), transform var(--T), box-shadow var(--T);
+}
+.social-link-dark svg { width: 14px; height: 14px; flex-shrink: 0; }
+.social-link-dark span { white-space: nowrap; }
+.social-link-dark:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: var(--sg);
+}
